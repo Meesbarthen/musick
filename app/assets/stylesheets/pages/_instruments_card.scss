@@ -1,0 +1,63 @@
+.index-container {
+  display: flex;
+  color: white;
+  margin: 20px;
+}
+
+.card {
+  background: none;
+  border: none;
+}
+
+.photo-size {
+  height: 180px;
+  width: 100%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.card-description {
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  font-family: Roboto;
+}
+
+.euro-sign {
+  font-size: 8px;
+  color: black;
+  margin-left: 2px;
+}
+
+.card-description a {
+  color: black;
+  font-size: 14px;
+}
+
+.index-map {
+  background: green;
+}
+
+.card-picture img {
+  border-radius: 10px;
+}
+
+.card-name {
+  font-weight: 500;
+  font-family: Roboto;
+}
+
+.card-price {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin: 0px;
+
+}
