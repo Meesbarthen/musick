@@ -1,7 +1,6 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.where(category: params[:category])
-    # @instruments = Instrument.all
+    @instruments = Instrument.all
   end
 
   def show
@@ -42,4 +41,5 @@ private
   def instrument_params
     params.require(:instrument).permit(:name, :category, :description, :address, :price, :availability)
   end
+
 end
