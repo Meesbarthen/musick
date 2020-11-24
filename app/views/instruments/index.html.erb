@@ -1,0 +1,13 @@
+<div class="index-container">
+
+  <div class="cards col-7">
+    <% @instruments.each do |instrument| %>
+    <%= render "card", instrument: instrument %>
+    <% end %>
+  </div>
+
+  <div class="index-map col-5">
+    <p> Here you will see a map tmr</p>
+  </div>
+
+</div>

@@ -34,7 +34,9 @@ categories.each_with_index do |category, index|
   category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
 end
 
-30.times do
+
+10.times do
+    file = URI.open('https://source.unsplash.com/collection/415470/200x100')
     instrument = Instrument.create!(
     name: Faker::Music.instrument,
     category: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"].sample,
@@ -45,6 +47,7 @@ end
     user: user,
     category_id: 1
   )
+    instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
 
 
