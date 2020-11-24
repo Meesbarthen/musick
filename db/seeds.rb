@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
+
 Instrument.delete_all
+User.delete_all
 
 user = User.new(
    email: 'mees@hshss.com',
@@ -19,13 +21,14 @@ user = User.new(
 user.save!
 
 30.times do
-  instrument = Instrument.create(
+    instrument = Instrument.create!(
     name: Faker::Music.instrument,
+    category: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"].sample,
     description: Faker::Movie.quote,
     address: Faker::Address.street_address,
     price: rand(20..80),
     availability: true,
-    user_id: 1
+    user: user
   )
 end
 
