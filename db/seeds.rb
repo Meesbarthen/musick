@@ -31,3 +31,10 @@ user.save!
     user: user
   )
 end
+
+categories = ["Keyboard family", "String family", "Percussion family", "Woodwind family", "Drum family"]
+
+categories.each do |category|
+  category = Category.create(name:[categories])
+end
+

@@ -1,4 +1,16 @@
-<div class="banner">
-  <h1>Yo! That's lit</h1>
-  <p>Lit up your life</p>
-</div>
+<div class="banner" style= "background-image: linear-gradient(rgba(94,21,19,0.5),rgba(94,21,19,0.5)), url(<%=image_path "background.jpg" %>);">
+  <div class="container">
+    <div class="logo">
+      <%= image_tag "logo.png", alt: "logo" %></div>
+      <h1>Yo! That's <strong>lit</strong></h1>
+      <p>Lit up your life.</p>
+      <a class="btn btn-flat" href="#">View instruments</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Categories</h3>
+    <div class="category-card">
+      <%= render "category", instruments: @instruments %>
+    </div>
+  </div>
