@@ -1,0 +1,12 @@
+<div class="container">
+  <%= simple_form_for(@instrument) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :price %>
+  <%= f.input :availability %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+  <% end %>
+</div>
