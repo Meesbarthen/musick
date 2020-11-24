@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
+require "open-uri"
 
 
 Instrument.delete_all
@@ -20,7 +21,9 @@ user = User.new(
   )
 user.save!
 
+
 30.times do
+    file = URI.open('https://source.unsplash.com/collection/1917674/300x200')
     instrument = Instrument.create!(
     name: Faker::Music.instrument,
     category: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"].sample,
@@ -30,4 +33,5 @@ user.save!
     availability: true,
     user: user
   )
+    instrument.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
