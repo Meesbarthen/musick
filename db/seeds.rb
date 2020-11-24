@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
-
+require "open-uri"
 
 Instrument.delete_all
 User.delete_all
@@ -20,6 +20,20 @@ user = User.new(
   )
 user.save!
 
+categories = ["Keyboard family", "String family", "Percussion family", "Woodwind family", "Drum family"]
+
+pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cGlhbm98ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
+  "https://images.unsplash.com/photo-1459305272254-33a7d593a851?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+  "https://images.unsplash.com/photo-1595069906974-f8ae7ffc3e7a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcmN1c3Npb258ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
+  "https://images.unsplash.com/photo-1445985543470-41fba5c3144a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+  "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"]
+
+categories.each_with_index do |category, index|
+  file = URI.open(pictures[index])
+  category = Category.create(name: category)
+  category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
+end
+
 30.times do
     instrument = Instrument.create!(
     name: Faker::Music.instrument,
@@ -28,13 +42,10 @@ user.save!
     address: Faker::Address.street_address,
     price: rand(20..80),
     availability: true,
-    user: user
+    user: user,
+    category_id: 1
   )
 end
 
-categories = ["Keyboard family", "String family", "Percussion family", "Woodwind family", "Drum family"]
 
-categories.each do |category|
-  category = Category.create(name:[categories])
-end
 
