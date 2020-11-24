@@ -7,4 +7,5 @@ class Instrument < ApplicationRecord
   validates :address, presence: true
   validates :price, presence: true
   validates :availability, inclusion: { in: [ true, false ] }
+  validates :category, inclusion: { in: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"] }
 end
