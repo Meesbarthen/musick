@@ -1,7 +1,7 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.where(category: params[:category])
     # @instruments = Instrument.all
+    @instruments = Instrument.all
   end
 
   def show
