@@ -6,36 +6,38 @@
     <h1>Yo! That's <strong>lit</strong></h1>
     <p>Lit up your life.</p>
     <div class="d-flex justify-content-center">
-    <div class="search-form">
-      <form action="" autocomplete="off">
-        <input type="text" name="" value="What instrument?" autocomplete="off">
-        <input type="text" name="" value="Pick up date">
-        <input type="text" name="" value="drop off date">
-        <button><i class="fas fa-search"></i></button>
-      </form>
-      </div>
+      <div class="search-form">
+        <form action="" autocomplete="off">
+          <input type="text" name="" value="What instrument?" autocomplete="off">
+          <input type="text" name="" value="Pick up date">
+          <input type="text" name="" value="drop off date">
+          <button><i class="fas fa-search"></i></button>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="categories-container">
-    <h3>Categories</h3>
-    <div class="category-cards mx-auto">
-      <% @categories.each do |category| %>
-      <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
-        <%= category.name %>
-      </div>
-      <% end %>
+<div class="categories-container">
+  <h3>Categories</h3>
+  <div class="category-cards mx-auto">
+    <% @categories.each do |category| %>
+    <%= link_to instruments_path do %>
+    <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
+      <%= category.name %>
     </div>
+    <% end %>
+    <% end %>
   </div>
+</div>
 
-  <div class="instruments-container">
-    <h3>Instruments</h3>
-    <div class="category-cards mx-auto">
-      <% @categories.each do |category| %>
-      <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
-        <%= "To be done" %>
-      </div>
-      <% end %>
-    </div>
+<div class="categories-container">
+  <h3>Instruments</h3>
+  <div class="category-cards mx-auto">
+    <% @instruments.each do |instrument| %>
+    <%= link_to instruments_path(instrument) do %>
+    <%= render "instruments/card", instrument: instrument %>
+    <% end %>
+    <% end %>
   </div>
+</div>
