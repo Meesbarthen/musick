@@ -1,0 +1,28 @@
+.form-new-instrument {
+  background: white;
+  padding: 30px;
+  width: 55%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px 4px #ccc;
+}
+
+.form-new-instrument input {
+  border-radius: 5px;
+}
+
+.form-new-instrument select {
+  border-radius: 5px;
+}
+
+.form-new-instrument textarea {
+  border-radius: 5px;
+}
+
+#submit-new-form {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  background: #5E1515;
+}
