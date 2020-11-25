@@ -6,6 +6,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = find_params
+    @booking = Booking.new
   end
 
   def new
@@ -13,10 +14,10 @@ class InstrumentsController < ApplicationController
   end
 
   def create
-    @instrument = Instrument.new(instrument_params)
-    @adduser = current_user
-    if @instrument.save
-      redirect_to instrument_path(@instrument)
+    instrument = Instrument.new(instrument_params)
+    instrument.user = current_user
+    if instrument.save
+      redirect_to instrument_path(instrument)
     else
       render 'new'
     end

@@ -1,7 +1,8 @@
 <div class="container">
   <%= simple_form_for(@instrument) do |f| %>
   <%= f.input :name %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: [
+      "Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"] %>
   <%= f.input :description %>
   <%= f.input :address %>
   <%= f.input :price %>
