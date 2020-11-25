@@ -9,6 +9,7 @@ require "faker"
 require "open-uri"
 
 Instrument.delete_all
+Category.delete_all
 User.delete_all
 
 user = User.new(
@@ -34,19 +35,20 @@ categories.each_with_index do |category, index|
   category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
 end
 
+puts "#{Category.count} catogories created"
 
 10.times do
     file = URI.open('https://source.unsplash.com/collection/415470/200x100')
-    instrument = Instrument.create!(
+    instrument = Instrument.new(
     name: Faker::Music.instrument,
-    category: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"].sample,
     description: Faker::Movie.quote,
     address: Faker::Address.street_address,
     price: rand(20..80),
     availability: true,
     user: user,
-    category_id: 1
   )
+    instrument.category = Category.first
+    instrument.save
     instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
 
