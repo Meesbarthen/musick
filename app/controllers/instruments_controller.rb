@@ -13,7 +13,7 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = find_params
     @booking = Booking.new
-    @user = current_user
+    @owner = @instrument.user
   end
 
   def new
@@ -24,7 +24,6 @@ class InstrumentsController < ApplicationController
     instrument = Instrument.new(instrument_params)
     instrument.user = current_user
     instrument.category = Category.find(params[:instrument][:category_id])
-
     if instrument.save
       redirect_to instrument_path(instrument)
     else
