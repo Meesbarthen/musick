@@ -1,16 +1,16 @@
 <div class="card">
-      <div class="card-picture">
-        <% instrument.photos.each do |photo| %>
-        <%= cl_image_tag(photo.key, class: "photo-size") %>
-      </div>
-      <div class="card-description">
-        <div class="card-name">
-          <p><%= link_to instrument.name, instrument_path(instrument) %></p>
-        </div>
-        <div class="card-price">
-          <p class="mb-0">Cost/Day</p>
-          <p><%= link_to instrument.price, instrument_path(instrument) %><i class="euro-sign fas fa-euro-sign"></i></p>
-        </div>
-        <% end %>
-      </div>
+  <div class="card-picture">
+    <% instrument.photos.each do |photo| %>
+    <%= cl_image_tag(photo.key, class: "photo-size") %>
+  </div>
+  <div class="card-description">
+    <div class="card-name">
+      <p><%= link_to instrument.name, instrument_path(instrument) %></p>
     </div>
+    <div class="card-price">
+      <p class="mb-0">Cost/Day</p>
+      <p><%= link_to instrument.price, instrument_path(instrument) %><i class="euro-sign fas fa-euro-sign"></i></p>
+    </div>
+    <% end %>
+  </div>
+</div>
