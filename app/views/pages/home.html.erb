@@ -1,16 +1,32 @@
 <div class="banner" style= "background-image: linear-gradient(rgba(94,21,19,0.5),rgba(94,21,19,0.5)), url(<%=image_path "background.jpg" %>);">
   <div class="container">
     <div class="logo">
-      <%= image_tag "logo.png", alt: "logo" %></div>
-      <h1>Yo! That's <strong>lit</strong></h1>
-      <p>Lit up your life.</p>
-      <a class="btn btn-flat" href="#">View instruments</a>
+      <%= image_tag "logo.png", alt: "logo" %>
     </div>
+    <h1>Yo! That's <strong>lit</strong></h1>
+    <p>Lit up your life.</p>
+    <a class="btn btn-flat" href="#">View instruments</a>
   </div>
+</div>
 
-  <div class="container">
-    <h3>Categories</h3>
-    <div class="category-card">
-      <%= render "category", instruments: @instruments %>
+<div class="categories-container">
+  <h3>Categories</h3>
+  <div class="category-cards mx-auto">
+    <% @categories.each do |category| %>
+    <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
+      <%= category.name %>
     </div>
+    <% end %>
   </div>
+</div>
+
+<div class="instruments-container">
+  <h3>Instruments</h3>
+  <div class="category-cards mx-auto">
+    <% @categories.each do |category| %>
+    <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
+      <%= "To be done" %>
+    </div>
+    <% end %>
+  </div>
+</div>
