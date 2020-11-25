@@ -23,6 +23,14 @@
   font-size: 14px;
 }
 
+.homepage-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
 .card-description {
   display: flex;
   justify-content: space-between;
