@@ -13,20 +13,23 @@
   <h3>Categories</h3>
   <div class="category-cards mx-auto">
     <% @categories.each do |category| %>
+    <%= link_to instruments_path do %>
     <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
       <%= category.name %>
     </div>
     <% end %>
+    <% end %>
   </div>
 </div>
 
-<div class="instruments-container">
+
+<div class="categories-container">
   <h3>Instruments</h3>
   <div class="category-cards mx-auto">
-    <% @categories.each do |category| %>
-    <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(<%= cl_image_path category.photo.key, height: 300, width: 200, crop: :fill %>)">
-      <%= "To be done" %>
-    </div>
+    <% @instruments.each do |instrument| %>
+    <%= link_to instruments_path(instrument) do %>
+    <%= render "instruments/card", instrument: instrument %>
+    <% end %>
     <% end %>
   </div>
 </div>
