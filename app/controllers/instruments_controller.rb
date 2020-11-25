@@ -5,7 +5,8 @@ class InstrumentsController < ApplicationController
     @markers = @instruments.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
-        lng: instrument.longitude
+        lng: instrument.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { instrument: instrument })
       }
     end
   end
