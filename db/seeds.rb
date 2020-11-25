@@ -39,7 +39,7 @@ end
 
 10.times do
     file = URI.open('https://source.unsplash.com/collection/415470/200x100')
-    instrument = Instrument.create!(
+    instrument = Instrument.new(
     name: Faker::Music.instrument,
     category: categories.sample,
     description: Faker::Movie.quote,
@@ -48,6 +48,8 @@ end
     availability: true,
     user: user
   )
+    instrument.category = Category.first
+    instrument.save
     instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
 

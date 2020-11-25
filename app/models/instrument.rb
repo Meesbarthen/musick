@@ -3,6 +3,7 @@ class Instrument < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many :bookings
+  belongs_to :category
 
   validates :name, presence: true
   validates :address, presence: true
