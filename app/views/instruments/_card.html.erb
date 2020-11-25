@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-picture">
     <% instrument.photos.each do |photo| %>
-    <%= cl_image_tag(photo.key, class: "photo-size") %>
+    <%= link_to cl_image_tag(photo.key, class: "photo-size"), instrument_path(instrument) %>
   </div>
   <div class="card-description">
     <div class="card-name">
