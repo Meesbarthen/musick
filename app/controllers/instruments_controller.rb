@@ -1,7 +1,13 @@
 class InstrumentsController < ApplicationController
   def index
-    # @instruments = Instrument.all
     @instruments = Instrument.all
+
+    @markers = @instruments.geocoded.map do |instrument|
+      {
+        lat: instrument.latitude,
+        lng: instrument.longitude
+      }
+    end
   end
 
   def show
@@ -35,7 +41,7 @@ class InstrumentsController < ApplicationController
     redirect_to instrument_path(@instrument)
   end
 
-  def delete
+  def destroy
     @instrument = find_params
     @instrument.destroy
     redirect_to instruments_path

@@ -10,7 +10,9 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
+          <% if @instrument.photos.attached? %>
           <%= cl_image_tag @instrument.photos[0].key, height: 300, width: 400, crop: :fill, class:"d-block w-100" %>
+          <% end %>
         </div>
         <% @instrument.photos.each_with_index do |photo, index| %>
         <% if index >= 1 %>

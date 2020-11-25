@@ -12,11 +12,20 @@
 .photo-size {
   height: 180px;
   width: 100%;
+  object-fit: cover;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.homepage-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   margin-right: 10px;
   font-size: 14px;
