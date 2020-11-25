@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bookings = current_user.bookings
+      @bookings = current_user.bookings
   end
 
   def show
@@ -34,8 +34,8 @@ class BookingsController < ApplicationController
     redirect_to booking_path(@booking)
   end
 
-  def delete
-    @booking = Booking.find(:id)
+  def destroy
+    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
   end

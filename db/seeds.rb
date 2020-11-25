@@ -8,9 +8,10 @@
 require "faker"
 require "open-uri"
 
-Instrument.delete_all
-Category.delete_all
-User.delete_all
+Booking.destroy_all
+Instrument.destroy_all
+User.destroy_all
+Category.destroy_all
 
 user = User.new(
    email: 'mees@hshss.com',
@@ -29,23 +30,23 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
   "https://images.unsplash.com/photo-1445985543470-41fba5c3144a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
   "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"]
 
-categories.each_with_index do |category, index|
+categories.map!.with_index do |category, index|
   file = URI.open(pictures[index])
   category = Category.create(name: category)
   category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
+  category
 end
-
-puts "#{Category.count} catogories created"
 
 10.times do
     file = URI.open('https://source.unsplash.com/collection/415470/200x100')
     instrument = Instrument.new(
     name: Faker::Music.instrument,
+    category: categories.sample,
     description: Faker::Movie.quote,
     address: Faker::Address.street_address,
     price: rand(20..80),
     availability: true,
-    user: user,
+    user: user
   )
     instrument.category = Category.first
     instrument.save
