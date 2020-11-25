@@ -31,13 +31,15 @@
   </div>
 </div>
 
-<div class="categories-container">
+<div class="homepage-cards-container m-5">
   <h3>Instruments</h3>
-  <div class="category-cards mx-auto">
+  <div class="homepage-cards mx-auto">
     <% @instruments.each do |instrument| %>
+    <div class="card">
     <%= link_to instruments_path(instrument) do %>
     <%= render "instruments/card", instrument: instrument %>
     <% end %>
+    </div>
     <% end %>
   </div>
 </div>

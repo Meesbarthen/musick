@@ -23,6 +23,7 @@ user = User.new(
 user.save!
 
 categories = ["Keyboard family", "String family", "Percussion family", "Woodwind family", "Drum family"]
+ADDRESSES = ["Burggasse 28, 1070 Vienna", "Schottenfeldgasse 9, 1070 Vienna", "Burgring 1, 1010 Vienna", "Schönbrunner Straße 110, 1050 Vienna", "Pilgramgasse 10, 1050 Vienna", "Schaeffergasse 13, 1040 Vienna", "Schwarzenbergplatz 1, 1010 Vienna", "Franz-Josefs-Kai, 1010 Vienna", "Taborstraße 5, 1020 Vienna"]
 
 pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cGlhbm98ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
   "https://images.unsplash.com/photo-1459305272254-33a7d593a851?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
@@ -38,12 +39,12 @@ categories.map!.with_index do |category, index|
 end
 
 10.times do
-    file = URI.open('https://source.unsplash.com/collection/415470/200x100')
+
+    file = URI.open('https://source.unsplash.com/collection/415470')
     instrument = Instrument.new(
     name: Faker::Music.instrument,
-    category: categories.sample,
     description: Faker::Movie.quote,
-    address: Faker::Address.street_address,
+    address: ADDRESSES.sample,
     price: rand(20..80),
     availability: true,
     user: user

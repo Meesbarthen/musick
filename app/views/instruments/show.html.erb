@@ -10,7 +10,9 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
+          <% if @instrument.photos.attached? %>
           <%= cl_image_tag @instrument.photos[0].key, height: 300, width: 400, crop: :fill, class:"d-block w-100" %>
+          <% end %>
         </div>
         <% @instrument.photos.each_with_index do |photo, index| %>
         <% if index >= 1 %>
@@ -44,11 +46,12 @@
         <div class="media mt-5 p-4 rounded" id="user-card-show-page">
           <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="...">
           <div class="media-body">
-            <h5 class="mt-0"><%= @user.name %></h5>
+            <h5 class="mt-0"><%= @user.first_name %></h5>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facere corporis temporibus nobis ex totam omnis repellat exercitationem magnam. Debitis.</p>
             <p><%= @instrument.address %></p>
           </div>
         </div>
+            <%= link_to "Delete this instrument", instrument_path(@instrument), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary mt-4 mb-4" %>
       </div>
       <div class="p-2 w-50" id="right-flex"><div class="d-flex justify-content-end"><%= render 'bookings/form' %></div></div>
     </div>
@@ -57,3 +60,4 @@
 </div>
 <div class="d-flex justify-content-center">
   <div class="container">
+
