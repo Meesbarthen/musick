@@ -14,13 +14,14 @@ User.destroy_all
 Category.destroy_all
 
 user = User.new(
-   email: 'mees@hshss.com',
-   password: '12345678',
-   first_name: "Mees",
-   last_name: "Barthen",
-   address: "1223AB"
-  )
+ email: 'mees@hshss.com',
+ password: '12345678',
+ first_name: "Mees",
+ last_name: "Barthen",
+ address: "1223AB"
+ )
 user.save!
+print "user printed #{user}"
 
 categories = ["Keyboard family", "String family", "Percussion family", "Woodwind family", "Drum family"]
 ADDRESSES = ["Burggasse 28, 1070 Vienna", "Schottenfeldgasse 9, 1070 Vienna", "Burgring 1, 1010 Vienna", "Schönbrunner Straße 110, 1050 Vienna", "Pilgramgasse 10, 1050 Vienna", "Schaeffergasse 13, 1040 Vienna", "Schwarzenbergplatz 1, 1010 Vienna", "Franz-Josefs-Kai, 1010 Vienna", "Taborstraße 5, 1020 Vienna"]
@@ -31,28 +32,31 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
   "https://images.unsplash.com/photo-1445985543470-41fba5c3144a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
   "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"]
 
-categories.map!.with_index do |category, index|
-  file = URI.open(pictures[index])
-  category = Category.create(name: category)
-  category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
-  category
-end
+  categories.map!.with_index do |category, index|
+    file = URI.open(pictures[index])
+    category = Category.create(name: category)
+    category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
+    category
+  end
+  print "Cato created"
 
-10.times do
+  10.times do
 
     file = URI.open('https://source.unsplash.com/collection/415470')
     instrument = Instrument.new(
-    name: Faker::Music.instrument,
-    description: Faker::Movie.quote,
-    address: ADDRESSES.sample,
-    price: rand(20..80),
-    availability: true,
-    user: user
-  )
-    instrument.category = Category.first
-    instrument.save
+      name: Faker::Music.instrument,
+      description: Faker::Movie.quote,
+      address: ADDRESSES.sample,
+      price: rand(20..80),
+      availability: true,
+      user_id: user.id,
+      category_id: rand(1..5)
+      )
+    instrument.save!
     instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-end
+  end
+
+  print "instruments"
 
 
 
