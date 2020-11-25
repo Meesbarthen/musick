@@ -13,6 +13,7 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = find_params
     @booking = Booking.new
+    @user = current_user
   end
 
   def new
@@ -23,7 +24,7 @@ class InstrumentsController < ApplicationController
     instrument = Instrument.new(instrument_params)
     instrument.user = current_user
     instrument.category = Category.find(params[:instrument][:category_id])
-    raise
+
     if instrument.save
       redirect_to instrument_path(instrument)
     else
@@ -41,7 +42,7 @@ class InstrumentsController < ApplicationController
     redirect_to instrument_path(@instrument)
   end
 
-  def delete
+  def destroy
     @instrument = find_params
     @instrument.destroy
     redirect_to instruments_path
@@ -50,11 +51,7 @@ class InstrumentsController < ApplicationController
 private
 
   def instrument_params
-<<<<<<< HEAD
-    params.require(:instrument).permit(:name, :description, :category, :address, :price, :availability, photos: [])
-=======
     params.require(:instrument).permit(:name, :description, :address, :price, :availability, photos: [])
->>>>>>> master
   end
 
   def find_params
