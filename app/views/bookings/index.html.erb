@@ -1,0 +1,13 @@
+<h1 class="text-center mt-4">Find all your bookings here</h1>
+<% @bookings.each do |booking|%>
+  <div class="bookings-card"></div>
+  <div class="card-body">
+  <!-- # please someone add a picture in here -->
+  <h4><strong> <%= booking.instrument.name %> </strong></h4>
+    <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
+  <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
+
+  </div>
+  </div>
+<% end %>
+
