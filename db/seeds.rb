@@ -36,7 +36,7 @@ end
 
 
 10.times do
-    file = URI.open('https://source.unsplash.com/collection/415470/200x100')
+    file = URI.open('https://source.unsplash.com/collection/415470')
     instrument = Instrument.create!(
     name: Faker::Music.instrument,
     category: ["Keyboard family", "Strings family", "Drum family", "Woodwind family", "Percussion family"].sample,
