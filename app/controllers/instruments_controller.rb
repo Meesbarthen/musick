@@ -1,11 +1,25 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.all
+    if params[:begin_date].present? && params[:end_date].present?
+      begin_date = Date.parse(params[:begin_date])
+      end_date = Date.parse(params[:end_date])
+      @instruments = Instrument.available_between(begin_date, end_date)
+    else
+      @instruments = Instrument.all
+    end
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @instruments = @instruments.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @instruments = @instruments.all
+    end
 
     @markers = @instruments.geocoded.map do |instrument|
       {
         lat: instrument.latitude,
-        lng: instrument.longitude
+        lng: instrument.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { instrument: instrument })
       }
     end
   end
@@ -13,7 +27,7 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = find_params
     @booking = Booking.new
-    @user = current_user
+    @owner = @instrument.user
   end
 
   def new
@@ -24,7 +38,6 @@ class InstrumentsController < ApplicationController
     instrument = Instrument.new(instrument_params)
     instrument.user = current_user
     instrument.category = Category.find(params[:instrument][:category_id])
-
     if instrument.save
       redirect_to instrument_path(instrument)
     else

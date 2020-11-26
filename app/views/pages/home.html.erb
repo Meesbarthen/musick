@@ -7,12 +7,22 @@
     <p>Lit up your life.</p>
     <div class="d-flex justify-content-center">
       <div class="search-form">
-        <form action="" autocomplete="off">
-          <input type="text" name="" value="What instrument?" autocomplete="off">
-          <input type="text" name="" value="Pick up date">
-          <input type="text" name="" value="drop off date">
-          <button><i class="fas fa-search"></i></button>
-        </form>
+        <!-- find text_field changer plugin!!! -->
+        <%= form_tag instruments_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Find an instrument"
+        %>
+        <%= text_field_tag :begin_date,
+        params[:begin_date],
+        placeholder: "begin date"
+        %>
+        <%= text_field_tag :end_date,
+        params[:end_date],
+        placeholder: "end date"
+        %>
+        <button><i class="fas fa-search"></i></button>
+        <% end %>
       </div>
     </div>
   </div>
@@ -36,9 +46,9 @@
   <div class="homepage-cards mx-auto">
     <% @instruments.each do |instrument| %>
     <div class="card">
-    <%= link_to instruments_path(instrument) do %>
-    <%= render "instruments/card", instrument: instrument %>
-    <% end %>
+      <%= link_to instruments_path(instrument) do %>
+      <%= render "instruments/card", instrument: instrument %>
+      <% end %>
     </div>
     <% end %>
   </div>
