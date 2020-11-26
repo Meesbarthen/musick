@@ -11,19 +11,16 @@
         <!-- should only be visible when logged in -->
         <% if user_signed_in? %>
         <div class='nav-items-left' style="display: flex">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="/bookings">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/instruments/new">Rent your instrument</a>
           </li>
-        </div
+        </div>
         <div class="nav-items-right" style="display: flex">
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+            <a href="" class="nav-link dropdown-toggle icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">My Profile</a>
                 <a class="dropdown-item" href="/bookings">My Bookings</a>

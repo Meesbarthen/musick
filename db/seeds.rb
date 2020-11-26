@@ -14,7 +14,7 @@ User.destroy_all
 Category.destroy_all
 
 user = User.new(
- email: 'mees@hshss.com',
+ email: 'mees@barthen.com',
  password: '12345678',
  first_name: "Mees",
  last_name: "Barthen",

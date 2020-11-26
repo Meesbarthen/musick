@@ -19,7 +19,6 @@
     </div>
   </div>
 <div class="index-container">
-
     <div class="cards col-7">
       <% @instruments.each do |instrument| %>
       <%= render "card", instrument: instrument %>
@@ -27,7 +26,6 @@
     </div>
 
     <div id="map"
-    style="width: 100%; height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
