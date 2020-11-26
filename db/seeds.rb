@@ -32,12 +32,16 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
   "https://images.unsplash.com/photo-1445985543470-41fba5c3144a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
   "https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"]
 
+  p categories
+
   categories.map!.with_index do |category, index|
     file = URI.open(pictures[index])
     category = Category.create(name: category)
     category.photo.attach(io: file, filename: "#{category}.png", content_type: 'image/png')
     category
   end
+
+  p categories
   print "Cato created"
 
   10.times do
@@ -49,8 +53,8 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
       address: ADDRESSES.sample,
       price: rand(20..80),
       availability: true,
-      user_id: user.id,
-      category_id: rand(1..5)
+      user: user,
+      category: categories.sample
       )
     instrument.save!
     instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
