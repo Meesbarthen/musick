@@ -1,5 +1,14 @@
 <div class="index-container">
 
+  <%= form_tag instruments_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an instrument"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
   <div class="cards col-7">
     <% @instruments.each do |instrument| %>
     <%= render "card", instrument: instrument %>

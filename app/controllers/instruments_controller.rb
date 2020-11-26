@@ -1,6 +1,11 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.all
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @instruments = Instrument.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @instruments = Instrument.all
+    end
 
     @markers = @instruments.geocoded.map do |instrument|
       {
