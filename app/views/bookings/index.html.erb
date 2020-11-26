@@ -1,4 +1,5 @@
 <div class="dashboard-body">
+  <div class="container">
   <div class="booked-instruments-cards mt-5">
   <h4 class="mb-3 font-weight-bold"> Your bookings </h4>
     <% @bookings.each do |booking|%>
@@ -8,7 +9,7 @@
       </div>
       <div class="card-body">
         <h5><strong> <%= booking.instrument.name %> </strong></h5>
-        <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
+        <strong>From:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>To: </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
         <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
       </div>
     </div>
@@ -25,15 +26,14 @@
       </div>
       <div class="card-body">
         <h5><strong> <%= booking.instrument.name %> </strong></h5>
-        <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
+        <strong>From:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>To: </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
         <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
       </div>
     </div>
     <% end %>
   </div>
-</div>
 
-<div class="dashboard-cards-container m-5">
+<div class="booked-instruments-cards mt-5">
   <h4 class="mb-3 font-weight-bold">Your instruments for rent</h4>
   <div class="dashboard-cards mx-auto">
     <% @current_user.instruments.each do |instrument| %>
@@ -44,4 +44,7 @@
     </div>
     <% end %>
   </div>
+</div>
+</div>
+
 </div>
