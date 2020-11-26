@@ -1,13 +1,47 @@
-<h1 class="text-center mt-4">Find all your bookings here</h1>
-<% @bookings.each do |booking|%>
-  <div class="bookings-card"></div>
-  <div class="card-body">
-  <!-- # please someone add a picture in here -->
-  <h4><strong> <%= booking.instrument.name %> </strong></h4>
-    <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
-  <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
-
+<div class="dashboard-body">
+  <div class="booked-instruments-cards mt-5">
+  <h4 class="mb-3 font-weight-bold"> Your bookings </h4>
+    <% @bookings.each do |booking|%>
+    <div class="bookings-card">
+      <div class="booked-picture rounded-lg">
+        <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
+      </div>
+      <div class="card-body">
+        <h5><strong> <%= booking.instrument.name %> </strong></h5>
+        <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
+        <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
+      </div>
+    </div>
+    <% end %>
   </div>
-  </div>
-<% end %>
 
+
+  <div class="mt-5 booked-instruments-cards">
+  <h4 class="mb-3 font-weight-bold"> Instruments you leased to someone  </h4>
+    <% @current_user.bookings_as_owner.each do |booking|%>
+    <div class="bookings-card">
+      <div class="booked-picture rounded-lg">
+        <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
+      </div>
+      <div class="card-body">
+        <h5><strong> <%= booking.instrument.name %> </strong></h5>
+        <strong>From:</strong> <%= booking.begin_date %> <strong>To: </strong><%= booking.begin_date %>
+        <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="dashboard-cards-container m-5">
+  <h4 class="mb-3 font-weight-bold">Your instruments for rent</h4>
+  <div class="dashboard-cards mx-auto">
+    <% @current_user.instruments.each do |instrument| %>
+    <div class="dashboard-card">
+    <%= link_to instruments_path(instrument) do %>
+    <%= render "instruments/card", instrument: instrument %>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
