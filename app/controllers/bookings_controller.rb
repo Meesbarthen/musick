@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
 
   def index
       @bookings = current_user.bookings
+      # @instrumentsbookedfromuser = current_user.instruments.bookings
+      @current_user = current_user
   end
 
   def show

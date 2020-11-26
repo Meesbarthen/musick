@@ -1,13 +1,31 @@
-<div class="index-container">
-
-  <div class="cards col-7">
-    <% @instruments.each do |instrument| %>
-    <%= render "card", instrument: instrument %>
-    <% end %>
+  <div class="d-flex justify-content-center">
+    <div class="search-form">
+      <!-- find text_field changer plugin!!! -->
+      <%= form_tag instruments_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      placeholder: "Find an instrument"
+      %>
+      <%= text_field_tag :begin_date,
+      params[:begin_date],
+      placeholder: "begin date"
+      %>
+      <%= text_field_tag :end_date,
+      params[:end_date],
+      placeholder: "end date"
+      %>
+      <button><i class="fas fa-search"></i></button>
+      <% end %>
+    </div>
   </div>
+<div class="index-container">
+    <div class="cards col-7">
+      <% @instruments.each do |instrument| %>
+      <%= render "card", instrument: instrument %>
+      <% end %>
+    </div>
 
     <div id="map"
     data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>

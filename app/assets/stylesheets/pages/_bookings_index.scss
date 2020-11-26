@@ -1,0 +1,62 @@
+.card-photo-size {
+  width: 180px;
+  height: 120px;
+}
+
+.cards-dashboard-page {
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.bookings-card {
+  display: flex;
+}
+
+.booked-instruments-cards {
+  background: white;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.dashboard-body {
+  font-family: Roboto;
+}
+
+.cards-dashboard-page {
+  background: white;
+}
+
+.user-instruments-dashboard {
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.booked-picture img {
+border-radius: 10px;
+}
+
+.dashboard-cards {
+  display: flex;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 10px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  max-width: 300px;
+}
+
+.dashboard-cards-container {
+  background: white;
+  border-radius: 10px;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}

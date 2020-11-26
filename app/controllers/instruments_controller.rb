@@ -1,6 +1,19 @@
 class InstrumentsController < ApplicationController
   def index
-    @instruments = Instrument.all
+    if params[:begin_date].present? && params[:end_date].present?
+      begin_date = Date.parse(params[:begin_date])
+      end_date = Date.parse(params[:end_date])
+      @instruments = Instrument.available_between(begin_date, end_date)
+    else
+      @instruments = Instrument.all
+    end
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR description ILIKE :query"
+      @instruments = @instruments.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @instruments = @instruments.all
+    end
 
     @markers = @instruments.geocoded.map do |instrument|
       {
