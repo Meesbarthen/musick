@@ -41,12 +41,11 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
     category
   end
 
-  p categories
-  print "Cato created"
+  puts "#{Category.count} categories created!"
 
-  10.times do
 
-    file = URI.open('https://source.unsplash.com/collection/415470')
+  3.times do
+
     instrument = Instrument.new(
       name: Faker::Music.instrument,
       description: Faker::Movie.quote,
@@ -57,10 +56,14 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
       category: categories.sample
       )
     instrument.save!
-    instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    5.times do
+      file = URI.open('https://source.unsplash.com/collection/415470')
+      instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    end
   end
 
-  print "instruments"
+  puts "#{Instrument.count} instruments created!"
+
 
 
 

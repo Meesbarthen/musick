@@ -4,56 +4,48 @@
         <li class="breadcrumb-item active" aria-current="page">Home</li>
       </ol>
     </nav> -->
-<!-- tiny change -->
-<br>
-<div class="container">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <% if @instrument.photos.attached? %>
-          <%= cl_image_tag @instrument.photos[0].key, height: 300, width: 400, crop: :fill, class:"d-block w-100" %>
-          <% end %>
+    <!-- tiny change -->
+    <br>
+    <div class="container">
+        <h3><strong><%= @instrument.name %></strong></h3>
+        <div class="d-flex align-items-center">
+          <i class="fas fa-map-marker-alt" style="margin-bottom: 10px"></i>
+          <h6 class="ml-3 mt-0"><%= @instrument.address %></h6>
         </div>
-        <% @instrument.photos.each_with_index do |photo, index| %>
-        <% if index >= 1 %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class:"d-block w-100" %>
+      <div class="row pictures-display">
+        <div class="col-6 px-0">
+          <%= cl_image_tag @instrument.photos[0].key, class:"h-100 w-100", style:"border-top-left-radius: 20px; border-bottom-left-radius: 20px" %>
         </div>
-        <% end %>
-        <% end %>
+        <div class="col-3 px-0" style="max-height: 410px">
+          <%= cl_image_tag @instrument.photos[1].key, class:"h-50 w-100" %>
+          <%= cl_image_tag @instrument.photos[2].key, class:"h-50 w-100" %>
+        </div>
+        <div class="col-3 px-0" style="max-height: 410px">
+          <%= cl_image_tag @instrument.photos[3].key, class:"h-50 w-100", style:"border-top-right-radius: 20px" %>
+          <%= cl_image_tag @instrument.photos[4].key, class:"h-50 w-100", style:"border-bottom-right-radius: 20px" %>
+        </div>
       </div>
-       <% if @instrument.photos.count >= 2 %>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-      <% end %>
     </div>
-  </div>
-</div>
-</div>
 
-  <div class="container mt-4">
-    <div class="d-flex justify-content-between">
-
-      <div class="p-2 w-50">
-        <h5><strong><%= @instrument.name %></strong></h5>
-        <p><%= @instrument.description %> Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Sequi ducimus dolores, ipsa nulla sit ratione eligendi eos exercitationem error provident! </p>
-        <div class="media mt-5 p-4 rounded" id="user-card-show-page">
-          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="...">
-          <div class="media-body">
-            <h5 class="mt-0"><strong><%= @owner.full_name %></strong></h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facere corporis temporibus nobis ex totam omnis repellat exercitationem magnam. Debitis.</p>
-            <p><%= @instrument.address %></p>
+    <div class="container">
+      <div class="instrument-details d-flex justify-content-between">
+        <div class="p-2 w-50">
+          <div class="content-top d-flex justify-content-between align-items-center pb-2 border-bottom border-secondary mb-2">
+            <h5><strong><%= @instrument.name %></strong></h5>
+            <div class="content-top-right d-flex align-items-center">
+              <h6 class="m-2"><%= @owner.full_name %></h6>
+              <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="...">
+            </div>
           </div>
-        </div>
-        <%= link_to "Delete this instrument", instrument_path(@instrument), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary mt-4 mb-4" %>
-      </div>
+            <p><strong>Instrument details</strong> </p>
+            <p><%= @instrument.description %> Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Sequi ducimus dolores, ipsa nulla sit ratione eligendi eos exercitationem error provident! </p>
+          <%= link_to "Edit instrument", instrument_path(@instrument) %>
 
-      <div class="p-2 w-50" id="right-flex"><div class="d-flex justify-content-end"><%= render 'bookings/form' %></div></div>
+          <div class="delete"><%= link_to instrument_path(@instrument), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash"></i>
+        <% end %>
+        </div>
+        </div>
+        <div class="p-2 w-50" id="right-flex"><div class="d-flex justify-content-end"><%= render 'bookings/form' %></div></div>
+      </div>
     </div>
-  </div>

@@ -11,8 +11,12 @@
   height: 100vh;
   position: relative;
   right: 0;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
+
+.search-form {
+  margin-bottom: 20px;
+}
+
 
