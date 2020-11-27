@@ -54,7 +54,11 @@
             <h5><strong><%= @instrument.name %></strong></h5>
             <div class="content-top-right d-flex align-items-center">
               <h6 class="m-2"><%= @owner.full_name %></h6>
-              <%= cl_image_tag current_user.photo.key, class:"align-self-start mr-3 avatar" %>
+              <% if @owner.photo.attached? %>
+                <%= cl_image_tag @owner.photo.key, class:"align-self-start mr-3 avatar" %>
+              <% else %>
+                <a href="" class="nav-link dropdown-toggle icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
+              <% end %>
               <!-- <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="..."> -->
             </div>
           </div>
