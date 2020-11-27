@@ -54,7 +54,8 @@
             <h5><strong><%= @instrument.name %></strong></h5>
             <div class="content-top-right d-flex align-items-center">
               <h6 class="m-2"><%= @owner.full_name %></h6>
-              <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="...">
+              <%= cl_image_tag current_user.photo.key, class:"align-self-start mr-3 avatar" %>
+              <!-- <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="align-self-start mr-3 avatar" alt="..."> -->
             </div>
           </div>
             <p><strong>Instrument details</strong> </p>
