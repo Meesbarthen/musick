@@ -3,6 +3,7 @@
   <div class="booked-instruments-cards mt-5">
   <h4 class="mb-3 font-weight-bold"> Your bookings </h4>
     <% @bookings.each do |booking|%>
+    <%= link_to booking_path(booking) do %>
     <div class="bookings-card">
       <div class="booked-picture rounded-lg">
         <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
@@ -14,11 +15,12 @@
       </div>
     </div>
     <% end %>
+    <% end %>
   </div>
 
 
   <div class="mt-5 booked-instruments-cards">
-  <h4 class="mb-3 font-weight-bold"> Instruments you leased to someone  </h4>
+  <h4 class="mb-3 font-weight-bold"> Your leased instruments  </h4>
     <% @current_user.bookings_as_owner.each do |booking|%>
     <div class="bookings-card">
       <div class="booked-picture rounded-lg">

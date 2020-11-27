@@ -6,6 +6,7 @@
 <p> <strong>Total Price: </strong><%= @booking.price %></p>
 <%#= cl_image_tag(@booking.instrument.photos.key, class: "photo-size") %>
 
-<%= link_to "Edit this booking", edit_booking_path(@booking), class: "btn btn-primary"%>
+<%= link_to "Edit this booking", edit_booking_path(@booking), class: "btn-flat"%>
+<%= link_to "Back to all bookings", bookings_path, class: "btn-flat"%>
 <%= link_to "Cancel this booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary"%>
 </div>
