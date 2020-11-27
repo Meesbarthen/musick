@@ -1,6 +1,7 @@
 .card-photo-size {
-  width: 180px;
-  height: 120px;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .cards-dashboard-page {
@@ -13,6 +14,11 @@
 
 .bookings-card {
   display: flex;
+}
+
+.card-body {
+ color: black;
+ text-decoration: none;
 }
 
 .booked-instruments-cards {

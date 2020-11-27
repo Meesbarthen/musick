@@ -48,7 +48,7 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
 
     instrument = Instrument.new(
       name: Faker::Music.instrument,
-      description: Faker::Movie.quote,
+      description: Faker::Music::Prince.lyric,
       address: ADDRESSES.sample,
       price: rand(20..80),
       availability: true,

@@ -1,15 +1,38 @@
-<div class="confirmed-booking-container ml-5">
-  <h3 class="mt-5"> Thanks for making a booking! 🎸 </h3>
-  <br>
-  <h5><strong><%= @booking.instrument.name %></strong></h5>
-  <p> <strong>From:</strong> <%= @booking.begin_date %> <strong>To:</strong> <%= @booking.end_date %></p>
-  <p> <strong>Total Price: </strong><%= @booking.price %></p>
-  <%#= cl_image_tag(@booking.instrument.photos.key, class: "photo-size") %>
+<div class="dashboard-body">
+    <div class="container">
+  <h2 class="header mt-5 pb-3 border-bottom">My Dashboard</h2>
+  <div class="confirmed-booking-container">
+    <div class="booked-instruments-cards mt-5">
+        <h3 class="header border-bottom pb-3"> Thanks for making a booking! </h3>
+      <div class="vertical d-flex">
+      <div class="booked-picture rounded-lg" style="margin-top: 10px">
+        <%= cl_image_tag(@booking.instrument.photos.first.key, class: "card-photo-size") %>
+        <p> <strong>Total Price: </strong><%= @booking.price %> €</p>
+      </div>
+      <div class="card-body">
+        <h5><strong>You 🎸 </strong></h5>
+        <strong>Dates:</strong> <%= @booking.begin_date.strftime("%b %d, %Y") %> <strong>- </strong><%= @booking.begin_date.strftime("%b %d, %Y") %>
+          <br>
+          <br>
+          <h4><strong> <%= @booking.instrument.name %> </strong></h4>
+          <br>
+          <p> <strong>Details:
+            <br></strong>  <%= @booking.instrument.description %></p>
+      </div>
 
-  <%= link_to "Edit this booking", edit_booking_path(@booking), class: "btn-flat"%>
-  <%= link_to "Back to all bookings", bookings_path, class: "btn-flat"%>
-  <div class="delete"><%= link_to booking_path(@booking), method: :delete, data: { confirm: "Are you sure you want to delete your booking?" } do %>
-    <i class="fas fa-trash"></i>
-    <% end %>
+      <div class="edit"><%= link_to edit_booking_path(@booking) do %>
+        <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <div class="delete"><%= link_to booking_path(@booking), method: :delete, data: { confirm: "Are you sure you want to delete your booking?" } do %>
+        <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="all-bookings" style="text-align: end">
+      <%= link_to "Back to all bookings", bookings_path, class: "btn-flat"%>
+    </div>
+    </div>
   </div>
+</div>
 </div>
