@@ -1,8 +1,10 @@
 .bookings-form {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background: white;
-  padding: 15px;
-  width: 80%;
-  border-radius: 5px;
+  width: 90%;
 }
 
 .submit-booking-form {
@@ -13,6 +15,31 @@
 }
 
 #user-card-show-page {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   background: white;
 }
 
+.pictures-display img {
+  object-fit: cover;
+  max-height: 410px;
+  border: 3px solid white;
+}
+
+.pictures-display {
+  max-height: 410px;
+}
+
+h5 {
+  margin: 0;
+}
+
+.instrument-details {
+  margin-top: 10px;
+}
+
+.fa-trash:before {
+  color: #5E1515;
+}
