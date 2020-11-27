@@ -19,4 +19,14 @@ class Instrument < ApplicationRecord
   #   using: {
   #     tsearch: { prefix: true }
   #   }
+
+  validate :validate_images
+
+  private
+
+  def validate_images
+    return if photos.count >= 1 && photos.count <= 5
+
+    errors.add(:photos, 'You can upload between 1 and 5 images')
+  end
 end
