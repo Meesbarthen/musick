@@ -44,7 +44,7 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
   puts "#{Category.count} categories created!"
 
 
-  3.times do
+  10.times do
 
     instrument = Instrument.new(
       name: Faker::Music.instrument,

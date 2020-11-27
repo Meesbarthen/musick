@@ -18,15 +18,17 @@
             <a class="nav-link" href="/bookings">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/instruments/new">Rent your instrument</a>
+            <a class="nav-link" href="/instruments">All Instruments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/instruments/new">Rent my instrument</a>
           </li>
         </div>
         <div class="nav-items-right" style="display: flex">
           <li class="nav-item dropdown">
             <a href="" class="nav-link dropdown-toggle icon" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">My Profile</a>
-                <a class="dropdown-item" href="/bookings">My Bookings</a>
+                <a class="dropdown-item" href="/bookings">Dashboard</a>
                 <a><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %></a>
               </div>
 
