@@ -1,35 +1,40 @@
-    <div class="d-flex flex-column" style="margin-top: 10px">
-    <div class="search-index col-7">
-      <div class="search-form">
-        <%= form_tag instruments_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Find an instrument"
-        %>
-        <%= text_field_tag :begin_date,
-        params[:begin_date],
-        placeholder: "begin date", class:"datepicker"
-        %>
-        <%= text_field_tag :end_date,
-        params[:end_date],
-        placeholder: "end date", class:"datepicker"
-        %>
-        <button><i class="fas fa-search"></i></button>
-        <% end %>
+    <!-- <div class="d-flex" style="margin-top: 10px"> -->
+      <div class="index-overall-div d-flex">
+
+        <div class="indexpage-left-side col-7 mt-3">
+          <div class="search-index">
+            <div class="search-form">
+              <%= form_tag instruments_path, method: :get do %>
+              <%= text_field_tag :query,
+              params[:query],
+              placeholder: "Find an instrument"
+              %>
+              <%= text_field_tag :begin_date,
+              params[:begin_date],
+              placeholder: "begin date", class:"datepicker"
+              %>
+              <%= text_field_tag :end_date,
+              params[:end_date],
+              placeholder: "end date", class:"datepicker"
+              %>
+              <button><i class="fas fa-search"></i></button>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="indexpage-container">
+            <div class="cards">
+              <% @instruments.each do |instrument| %>
+              <%= render "card", instrument: instrument %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="index-right-side col-5 mr-0">
+          <div id="map"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
     </div>
-  <div class="index-container">
-    <div class="cards col-7">
-      <% @instruments.each do |instrument| %>
-      <%= render "card", instrument: instrument %>
-      <% end %>
-    </div>
-</div>
-  </div>
-
-
-    <div id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
