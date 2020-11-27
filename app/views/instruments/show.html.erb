@@ -40,11 +40,6 @@
             <p><strong>Instrument details</strong> </p>
             <p><%= @instrument.description %> Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Sequi ducimus dolores, ipsa nulla sit ratione eligendi eos exercitationem error provident! </p>
           <%= link_to "Edit instrument", instrument_path(@instrument) %>
-
-          <div class="delete"><%= link_to instrument_path(@instrument), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash"></i>
-        <% end %>
-        </div>
         </div>
         <div class="p-2 w-50" id="right-flex"><div class="d-flex justify-content-end"><%= render 'bookings/form' %></div></div>
       </div>
