@@ -55,11 +55,12 @@ pictures = ["https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=
       user: user,
       category: categories.sample
       )
-    instrument.save!
-    5.times do
+      5.times do
       file = URI.open('https://source.unsplash.com/collection/415470')
       instrument.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
     end
+    instrument.save!
+    p instrument
   end
 
   puts "#{Instrument.count} instruments created!"
