@@ -6,6 +6,7 @@
 .card {
   background: none;
   border: none;
+  text-decoration: none;
 }
 
 .photo-size {
@@ -36,11 +37,23 @@
   justify-content: space-between;
   background: none;
   font-family: Roboto;
+  color: black;
+}
+
+.card a:hover {
+  text-decoration: none;
+}
+.card-description:hover {
+  color: #161a1d;
+  text-decoration: none;
+}
+
+.card-description a:hover {
+  text-decoration: none;
 }
 
 .euro-sign {
   font-size: 8px;
-  color: black;
   margin-left: 2px;
 }
 
@@ -63,10 +76,13 @@
 }
 
 .card-price {
-  color: black;
   display: flex;
   flex-direction: column;
   text-align: right;
   margin: 0px;
+}
 
+.card-link:hover {
+  text-decoration: none;
+  transform: scale(1.1, 1.1);
 }
