@@ -14,15 +14,35 @@
         </div>
       <div class="row pictures-display">
         <div class="col-6 px-0">
+          <% if @instrument.photos.count > 0 %>
           <%= cl_image_tag @instrument.photos[0].key, class:"h-100 w-100", style:"border-top-left-radius: 20px; border-bottom-left-radius: 20px" %>
+          <% else %>
+          <%= image_tag 'logo.png', class:"h-100 w-100", style:"border-top-left-radius: 20px; border-bottom-left-radius: 20px"  %>
+          <% end %>
         </div>
         <div class="col-3 px-0" style="max-height: 410px">
+          <% if @instrument.photos.count > 1 %>
           <%= cl_image_tag @instrument.photos[1].key, class:"h-50 w-100" %>
+          <% else %>
+          <%= image_tag 'logo.png', class:"h-50 w-100"  %>
+          <% end %>
+          <% if @instrument.photos.count > 2 %>
           <%= cl_image_tag @instrument.photos[2].key, class:"h-50 w-100" %>
+          <% else %>
+          <%= image_tag 'logo.png', class:"h-50 w-100"  %>
+          <% end %>
         </div>
         <div class="col-3 px-0" style="max-height: 410px">
+          <% if @instrument.photos.count > 3 %>
           <%= cl_image_tag @instrument.photos[3].key, class:"h-50 w-100", style:"border-top-right-radius: 20px" %>
+          <% else %>
+          <%= image_tag 'logo.png', class:"h-50 w-100", style:"border-top-right-radius: 20px"  %>
+          <% end %>
+          <% if @instrument.photos.count > 4 %>
           <%= cl_image_tag @instrument.photos[4].key, class:"h-50 w-100", style:"border-bottom-right-radius: 20px" %>
+          <% else %>
+          <%= image_tag 'logo.png', class:"h-50 w-100", style:"border-bottom-right-radius: 20px"  %>
+          <% end %>
         </div>
       </div>
     </div>

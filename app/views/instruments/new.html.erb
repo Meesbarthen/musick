@@ -1,4 +1,3 @@
-
   <div class="container">
     <div class="form-new-instrument">
       <h3>Do you want to add a new instrument?</h3>
@@ -7,9 +6,9 @@
       <%= f.association :category%>
         <%= f.input :description %>
         <%= f.input :address %>
-        <%= f.input :price %>
+        <%= f.input :price, label: "Price per day" %>
         <%= f.input :availability %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :photos, as: :file, input_html: { minlength: 1, maxlength: 5, multiple: true } %>
         <%= f.submit id:"submit-new-form" %>
         <% end %>
       </div>
