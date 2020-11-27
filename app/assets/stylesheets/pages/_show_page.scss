@@ -42,4 +42,21 @@ h5 {
 
 .fa-trash:before {
   color: #5E1515;
+  font-size: large;
+  margin: 5px;
+}
+
+.fa-edit:before {
+  color: #5E1515;
+  font-size: large;
+  margin: 5px;
+}
+
+.confirmed-booking-container {
+  margin: 0 50px;
+}
+
+.booked-instruments-cards {
+  max-width: 1000px;
+  margin: 0 auto;
 }

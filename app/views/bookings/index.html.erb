@@ -1,52 +1,56 @@
 <div class="dashboard-body">
   <div class="container">
-  <div class="booked-instruments-cards mt-5">
-  <h4 class="mb-3 font-weight-bold"> Your bookings </h4>
-    <% @bookings.each do |booking|%>
-    <%= link_to booking_path(booking) do %>
-    <div class="bookings-card">
-      <div class="booked-picture rounded-lg">
-        <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
+  <h2 class="header mt-5 pb-3 border-bottom">My Dashboard</h2>
+    <div class="booked-instruments-cards mt-5">
+      <h4 class="mb-3 font-weight-bold"> Your bookings </h4>
+      <% @bookings.each do |booking|%>
+      <div class="bookings-card">
+        <div class="booked-picture rounded-lg">
+          <%= link_to booking_path(booking) do %>
+          <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
+          <% end %>
+          <p> <strong>Total Price: </strong>  <%= booking.price %> €</p>
+        </div>
+        <div class="card-body">
+          <strong>Dates:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>- </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
+          <br>
+          <br>
+          <h4><strong> <%= booking.instrument.name %> </strong></h4>
+          <br>
+          <p> <strong>Details:
+            <br></strong>  <%= booking.instrument.description %></p>
+          </div>
+        </div>
+        <% end %>
       </div>
-      <div class="card-body">
-        <h5><strong> <%= booking.instrument.name %> </strong></h5>
-        <strong>From:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>To: </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
-        <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
+
+      <div class="booked-instruments-cards mt-5">
+        <h4 class="mb-3 font-weight-bold">Your instruments for rent</h4>
+        <div class="dashboard-cards mx-auto">
+          <% @current_user.instruments.each do |instrument| %>
+          <div class="dashboard-card">
+            <%= link_to instruments_path(instrument) do %>
+            <%= render "instruments/card", instrument: instrument %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="booked-instruments-cards mt-5">
+        <h4 class="mb-3 font-weight-bold"> Your leased instruments  </h4>
+        <% @current_user.bookings_as_owner.each do |booking|%>
+        <div class="bookings-card">
+          <div class="booked-picture rounded-lg">
+            <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
+          </div>
+          <div class="card-body">
+            <h5><strong> <%= booking.instrument.name %> </strong></h5>
+            <strong>From:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>To: </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
+            <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
-    <% end %>
   </div>
-
-
-  <div class="mt-5 booked-instruments-cards">
-  <h4 class="mb-3 font-weight-bold"> Your leased instruments  </h4>
-    <% @current_user.bookings_as_owner.each do |booking|%>
-    <div class="bookings-card">
-      <div class="booked-picture rounded-lg">
-        <%= cl_image_tag(booking.instrument.photos.first.key, class: "card-photo-size") %>
-      </div>
-      <div class="card-body">
-        <h5><strong> <%= booking.instrument.name %> </strong></h5>
-        <strong>From:</strong> <%= booking.begin_date.strftime("%b %d, %Y") %> <strong>To: </strong><%= booking.begin_date.strftime("%b %d, %Y") %>
-        <p> <strong>Total Price: </strong>  <%= booking.price %> </p>
-      </div>
-    </div>
-    <% end %>
-  </div>
-
-<div class="booked-instruments-cards mt-5">
-  <h4 class="mb-3 font-weight-bold">Your instruments for rent</h4>
-  <div class="dashboard-cards mx-auto">
-    <% @current_user.instruments.each do |instrument| %>
-    <div class="dashboard-card">
-    <%= link_to instruments_path(instrument) do %>
-    <%= render "instruments/card", instrument: instrument %>
-    <% end %>
-    </div>
-    <% end %>
-  </div>
-</div>
-</div>
-
-</div>
